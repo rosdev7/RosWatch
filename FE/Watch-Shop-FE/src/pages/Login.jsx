@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Toast from '../components/Toast';
-import undraw from '../assets/img/bg-01.jpg';
 import requestHandle from '../utils/requestHandle';
+
+const SIDE_IMAGE =
+  'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&w=1000&q=80';
 
 const initialValues = { email: '', password: '' };
 
@@ -75,20 +77,35 @@ const Login = () => {
   };
 
   return (
-    <div className='bg-gray-100 min-h-screen flex items-center justify-center'>
-      <div className='bg-white w-full max-w-screen-md rounded-lg overflow-hidden'>
-        <div
-          className='bg-cover bg-center bg-gray-400 py-16'
-          style={{ backgroundImage: `url(${undraw})` }}
-        >
-          <h1 className='text-4xl text-white font-bold uppercase text-center p-4'>Đăng nhập</h1>
+    <div className='bg-cream min-h-screen flex items-start justify-center px-4 py-12'>
+      <div className='bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl grid md:grid-cols-2'>
+        {/* Panel ảnh */}
+        <div className='relative hidden md:block'>
+          <img
+            src={SIDE_IMAGE}
+            alt='RosWatch'
+            className='absolute inset-0 h-full w-full object-cover'
+          />
+          <div className='absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/30' />
+          <div className='relative z-10 flex h-full flex-col justify-end p-10 text-white'>
+            <span className='eyebrow !text-accent'>RosWatch</span>
+            <h2 className='section-title mt-3 text-3xl font-bold text-white'>
+              Chào mừng trở lại
+            </h2>
+            <p className='mt-3 text-sm text-white/75'>
+              Đăng nhập để theo dõi đơn hàng và khám phá những bộ sưu tập mới nhất.
+            </p>
+          </div>
         </div>
+
+        {/* Form */}
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
+          validateOnBlur={false}
           onSubmit={handleLogin}
         >
-          <Form className='w-full py-10 px-20'>
+          <Form className='w-full p-8 sm:p-12'>
             {message && (
               <Toast
                 message={message}
@@ -96,78 +113,60 @@ const Login = () => {
                 onClose={() => setMessage('')}
               />
             )}
-            <div className='mb-6 grid grid-cols-8 gap-2'>
-              <label
-                className='text-[#808080] text-sm font-bold self-center col-span-1'
-                htmlFor='email'
-              >
+            <div className='mb-8'>
+              <span className='eyebrow'>Tài khoản</span>
+              <h1 className='section-title mt-2 text-3xl font-bold'>Đăng nhập</h1>
+            </div>
+
+            <div className='mb-5'>
+              <label className='block text-sm font-semibold text-ink mb-2' htmlFor='email'>
                 Email
               </label>
               <Field
                 type='email'
                 id='email'
                 name='email'
-                className='w-full col-span-7 border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
+                className='w-full h-12 px-4 rounded-xl border border-gray-300 text-sm transition-all focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20'
                 placeholder='Nhập email'
               />
-              <div className='col-span-1'></div>
-              <ErrorMessage
-                name='email'
-                component='div'
-                className='text-red-500 col-span-7'
-              />
+              <ErrorMessage name='email' component='div' className='text-red-500 text-sm mt-1' />
             </div>
 
-            <div className='mb-6 grid grid-cols-8 gap-2'>
-              <label
-                className='block text-[#808080] text-sm font-bold self-center col-span-1'
-                htmlFor='password'
-              >
+            <div className='mb-2'>
+              <label className='block text-sm font-semibold text-ink mb-2' htmlFor='password'>
                 Mật khẩu
               </label>
               <Field
                 type='password'
                 id='password'
                 name='password'
-                className='w-full col-span-7 border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
+                className='w-full h-12 px-4 rounded-xl border border-gray-300 text-sm transition-all focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20'
                 placeholder='Nhập mật khẩu'
               />
-              <div className='col-span-1'></div>
-              <ErrorMessage
-                name='password'
-                component='div'
-                className='text-red-500 col-span-7'
-              />
+              <ErrorMessage name='password' component='div' className='text-red-500 text-sm mt-1' />
             </div>
-            <div className='col-span-2 text-right'>
-              <Link
-                to='/forgot-password'
-                className='text-[#5d84ef] text-sm'
-              >
+
+            <div className='text-right mb-6'>
+              <Link to='/forgot-password' className='text-sm font-medium text-accent-dark hover:underline'>
                 Quên mật khẩu?
               </Link>
             </div>
-            <div className='mb-6 grid grid-cols-8 pt-7'>
-              <div className='col-span-1'></div>
-              <button
-                type='submit'
-                className='w-full col-span-7 bg-main-red text-white font-bold py-2 rounded-full hover:bg-main-black'
-              >
-                Đăng nhập
-              </button>
-            </div>
-            <div className='col-span-6 text-right text-sm'>
-              <span className=''>Chưa có tài khoản? </span>
-              <Link
-                to='/register'
-                className='text-[#999999] font-bold'
-              >
+
+            <button
+              type='submit'
+              className='w-full bg-ink text-white font-bold py-3 rounded-full transition-all hover:bg-ink-dark hover:-translate-y-0.5'
+            >
+              Đăng nhập
+            </button>
+
+            <div className='text-center text-sm mt-6 text-gray-500'>
+              <span>Chưa có tài khoản? </span>
+              <Link to='/register' className='font-bold text-accent-dark hover:underline'>
                 Đăng ký ngay
               </Link>
             </div>
           </Form>
         </Formik>
-        <div className='relative bg-gray-600 bg-opacity-70 top-0 left-0 h-full'></div>
       </div>
     </div>
   );

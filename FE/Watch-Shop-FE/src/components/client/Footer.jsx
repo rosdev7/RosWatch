@@ -2,66 +2,69 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className='bg-neutral-200 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left'>
-      <div className='flex items-center justify-center border-b-2 border-main-red p-6 dark:border-neutral-500 lg:justify-between'>
-        <div className='mr-12 hidden lg:block'>
-          <span className='font-bold'>RosWatch rất vui được đồng hành cùng bạn !!!</span>
-        </div>
-        <div className='flex justify-center gap-3'>
-          <a
-            href='#!'
-            aria-label='Facebook'
-            className='flex h-9 w-9 items-center justify-center rounded-full bg-main-red text-white transition hover:brightness-110'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-4 w-4'
-              fill='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z' />
-            </svg>
-          </a>
+    <footer className='bg-ink text-neutral-300'>
+      <div className='w-container mx-auto px-6 pt-14 pb-10'>
+        <div className='grid gap-10 md:grid-cols-2 lg:grid-cols-4'>
+          <div>
+            <h6 className='mb-4 flex items-center gap-2 font-serif text-xl font-bold text-white'>
+              <span className='inline-block w-1.5 h-6 bg-accent rounded-full' />
+              ROS<span className='text-accent'>WATCH</span>
+            </h6>
+            <p className='text-sm leading-6 text-neutral-400'>
+              Khám phá công nghệ đồng hồ thông minh tại cửa hàng trực tuyến của chúng tôi, với bộ
+              sưu tập đa dạng kết hợp phong cách và tiện ích.
+            </p>
+            <div className='mt-5 flex gap-3'>
+              <a
+                href='#!'
+                aria-label='Facebook'
+                className='flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-accent hover:bg-accent hover:text-ink'
+              >
+                <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='currentColor' viewBox='0 0 24 24'>
+                  <path d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z' />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h6 className='mb-4 text-sm font-bold uppercase tracking-wider text-accent'>Liên hệ</h6>
+            <p className='text-sm text-neutral-400 mb-2'>Email: roswatch8255@gmail.com</p>
+            <p className='text-sm text-neutral-400'>Điện thoại: +84 968794894</p>
+          </div>
+
+          <div>
+            <h6 className='mb-4 text-sm font-bold uppercase tracking-wider text-accent'>
+              Hỗ trợ khách hàng
+            </h6>
+            <p className='text-sm text-neutral-400 mb-2 hover:text-white transition cursor-pointer'>Câu hỏi thường gặp</p>
+            <p className='text-sm text-neutral-400 mb-2 hover:text-white transition cursor-pointer'>Giao hàng &amp; Đổi trả</p>
+            <p className='text-sm text-neutral-400 hover:text-white transition cursor-pointer'>Bảo hành</p>
+          </div>
+
+          <div>
+            <h6 className='mb-4 text-sm font-bold uppercase tracking-wider text-accent'>
+              Đăng ký nhận tin
+            </h6>
+            <p className='text-sm text-neutral-400 mb-4'>
+              Đăng ký nhận tin khuyến mãi và cập nhật mới nhất từ chúng tôi.
+            </p>
+            <div className='flex'>
+              <input
+                type='email'
+                placeholder='Email của bạn'
+                className='h-10 flex-1 min-w-0 rounded-l-full bg-white/10 px-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:bg-white/15'
+              />
+              <button className='rounded-r-full bg-accent px-4 text-sm font-bold text-ink hover:bg-accent-dark transition'>
+                Gửi
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className='mx-6 py-10 text-center md:text-left'>
-        <div className='grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4'>
-          <div>
-            <h6 className='mb-4 flex items-center justify-center font-semibold uppercase md:justify-start'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='currentColor'
-                className='mr-3 h-4 w-4'
-              >
-                <path d='M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z' />
-              </svg>
-              RosWatch
-            </h6>
-            <p>
-              Khám phá công nghệ đồng hồ thông minh tại cửa hàng trực tuyến của chúng tôi, với bộ sưu tập đa dạng kết hợp phong cách và tiện ích. Trải nghiệm tương lai của thời trang đeo tay tại RosWatch.
-            </p>
-          </div>
-          <div>
-            <h6 className='mb-4 font-semibold uppercase'>Liên hệ</h6>
-            <p>Email: roswatch8255@gmail.com</p>
-            <p>Điện thoại: +84 968794894</p>
-          </div>
-          <div>
-            <h6 className='mb-4 font-semibold uppercase'>Hỗ trợ khách hàng</h6>
-            <p>Câu hỏi thường gặp</p>
-            <p>Giao hàng &amp; Đổi trả</p>
-            <p>Bảo hành</p>
-          </div>
-          <div>
-            <h6 className='mb-4 font-semibold uppercase'>Đăng ký nhận tin</h6>
-            <p>Đăng ký nhận tin khuyến mãi và cập nhật mới nhất từ chúng tôi.</p>
-          </div>
-        </div>
-      </div>
-      <div className='bg-main-red p-6 text-center'>
-        <span className='text-neutral-100'>© 2026 Bản quyền thuộc về </span>
+      <div className='border-t border-white/10 py-5 text-center text-sm'>
+        <span className='text-neutral-400'>© 2026 Bản quyền thuộc về </span>
         <span className='font-semibold text-accent'>RosWatch</span>
       </div>
     </footer>

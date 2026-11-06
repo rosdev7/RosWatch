@@ -29,9 +29,9 @@ const Brands = ({ handleGetProductsByBrand }) => {
           key={index}
           onClick={() => handleGetProductsByBrand(item.id)}
           className={`col-span-3 bg-white text-main-black text-base text-center font-semibold
-           px-4 py-3 rounded-xl cursor-pointer transition-all
+           px-4 py-4 rounded-xl cursor-pointer transition-all
            duration-200 ease-in-out border border-gray-200 shadow-sm
-           hover:-translate-y-1 hover:shadow-md hover:bg-main-red hover:text-white hover:border-main-red`}
+           hover:-translate-y-1 hover:shadow-lg hover:bg-ink hover:text-white hover:border-ink`}
         >
           {item.name}
         </div>
@@ -40,14 +40,14 @@ const Brands = ({ handleGetProductsByBrand }) => {
   };
 
   return (
-    <div className='mt-3'>
-      <div className='flex items-center gap-3 py-5 border-b border-gray-200'>
-        <span className='w-1.5 h-8 bg-accent rounded-full'></span>
-        <h2 className='text-main-black text-3xl font-extrabold tracking-tight'>
+    <div className='mt-14'>
+      <div className='text-center'>
+        <span className='eyebrow'>Đối tác chính hãng</span>
+        <h2 className='section-title mt-3 text-3xl md:text-4xl font-bold'>
           Thương hiệu nổi bật
         </h2>
       </div>
-      <div className='grid grid-cols-12 gap-4 mt-6'>{renderData()}</div>
+      <div className='grid grid-cols-12 gap-4 mt-8'>{renderData()}</div>
     </div>
   );
 };

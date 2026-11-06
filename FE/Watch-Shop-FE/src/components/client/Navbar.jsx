@@ -22,6 +22,7 @@ const Navbar = () => {
         <NavLink
           key={index}
           to={nav.to}
+          end
           className={handleClassName}
         >
           {nav.text}

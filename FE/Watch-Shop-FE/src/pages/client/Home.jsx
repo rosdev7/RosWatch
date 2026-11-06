@@ -68,22 +68,32 @@ const Home = () => {
   };
 
   return (
-    <div className='w-container m-auto mt-2'>
+    <div className='w-container m-auto mt-6 pb-20'>
       <Carousel />
       <Top5Product />
       <Brands handleGetProductsByBrand={handleGetProductsByBrand} />
-      <div className='relative z-30 flex justify-center py-10 gap-4'>
-        <Search
-          products={products}
-          searchTerm={searchTerm}
-          handleSearch={handleSearch}
-        />
-      </div>
-      <div className='relative z-10'>
-        <ListProduct
-          products={products}
-          filteredList={filteredList}
-        />
+      <div className='mt-16'>
+        <div className='flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8'>
+          <div>
+            <span className='eyebrow'>Toàn bộ cửa hàng</span>
+            <h2 className='section-title mt-3 text-3xl md:text-4xl font-bold'>
+              Tất cả sản phẩm
+            </h2>
+          </div>
+          <div className='relative z-30'>
+            <Search
+              products={products}
+              searchTerm={searchTerm}
+              handleSearch={handleSearch}
+            />
+          </div>
+        </div>
+        <div className='relative z-10'>
+          <ListProduct
+            products={products}
+            filteredList={filteredList}
+          />
+        </div>
       </div>
     </div>
   );
