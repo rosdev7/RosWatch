@@ -8,9 +8,13 @@ module.exports = {
 
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        'main-red': '#2d2d2e',
-        'main-black': '#354458',
+        'main-red': '#1f2937',
+        'main-black': '#374151',
+        accent: '#c6a15b',
       },
       width: {
         container: '1300px',

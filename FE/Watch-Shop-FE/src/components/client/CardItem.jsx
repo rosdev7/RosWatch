@@ -11,42 +11,45 @@ const CardItem = ({ item }) => {
   };
 
   return (
-    <div className='col-span-3 block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]'>
+    <div className='product-card col-span-3 flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm'>
       <div className='relative'>
         {item?.discount > 0 && (
-          <span className='absolute z-50 bg-main-red text-white  rounded-b-md rounded-r-md py-2 px-4 font-bold capitalize shadow-lg right-[0%] opacity-80 hover:opacity-100 '>
-            discount {item?.discount} %
+          <span className='absolute top-3 left-3 z-50 bg-main-red text-white rounded-full py-1 px-3 text-xs font-semibold shadow-md'>
+            -{item?.discount}%
           </span>
         )}
-        <div className='cursor-pointer rounded-t-lg overflow-hidden h-[310px] flex items-center'>
+        <div
+          className='cursor-pointer overflow-hidden h-[280px] bg-gray-50 flex items-center justify-center'
+          onClick={() => handleNavigate(item.id)}
+        >
           <img
-            className='hover:scale-125 duration-200 ease-linear'
+            className='h-full w-full object-contain p-6 transition-transform duration-300 ease-out hover:scale-110'
             src={getImageUrl(item.imageSource[0])}
-            alt='img product'
-            onClick={() => handleNavigate(item.id)}
+            alt={item?.name || 'product'}
           />
         </div>
       </div>
-      <div className='p-6 flex flex-col justify-center gap-1 '>
+      <div className='p-5 flex flex-col flex-1 gap-2'>
         <h5
-          className='mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center truncate cursor-pointer'
+          className='text-base font-semibold leading-snug text-gray-800 text-center truncate cursor-pointer hover:text-main-red transition-colors'
           onClick={() => handleNavigate(item.id)}
+          title={item?.name}
         >
           {item?.name}
         </h5>
-        <div className='flex gap-4 justify-center'>
+        <div className='flex justify-center'>
           <Rating
             isDisable={true}
             ratingStar={item.star}
           />
         </div>
-        <div className='flex gap-4 justify-center'>
-          <p className='mb-4 text-sm font-semibold text-main-red '>
-            {lamTronGia(item?.price - item?.price * (item?.discount / 100))} vnd
+        <div className='mt-auto flex items-baseline gap-2 justify-center pt-1'>
+          <p className='text-lg font-bold text-main-red'>
+            {lamTronGia(item?.price - item?.price * (item?.discount / 100))}₫
           </p>
           {item?.discount > 0 && (
-            <p className='mb-4 text-sm font-semibold text-main-black line-through'>
-              {lamTronGia(item?.price)} vnd
+            <p className='text-sm font-medium text-gray-400 line-through'>
+              {lamTronGia(item?.price)}₫
             </p>
           )}
         </div>

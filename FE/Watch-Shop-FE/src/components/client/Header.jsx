@@ -66,27 +66,18 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-main-red'>
-      <div className='w-container h-header mx-auto flex items-center justify-between border-b-2'>
+    <header className='bg-main-red sticky top-0 z-50 shadow-lg'>
+      <div className='w-container h-header mx-auto flex items-center justify-between border-b border-white/10'>
         <div className='text-white text-2xl font-semibold flex items-center'>
-          <div className='w-16 h-16 mr-2 flex items-center justify-center border border-white rounded-full'>
+          <div className='w-14 h-14 mr-3 flex items-center justify-center bg-white/10 rounded-full overflow-hidden'>
             <img
               src={logo}
               alt='logo'
-              srcSet=''
-              className='w-20 h-20'
+              className='w-12 h-12 object-contain'
             />
           </div>
-          <p className='text-xl font-bold'>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>R</span>
-          <span style={{ transform: 'rotate(5deg)' }}>O</span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>S</span>
-          <span style={{ transform: 'rotate(5deg)' }}> </span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>W</span>
-          <span style={{ transform: 'rotate(5deg)' }}>A</span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>T</span>
-          <span style={{ transform: 'rotate(5deg)' }}>C</span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>H</span>
+          <p className='text-2xl font-extrabold tracking-wide'>
+            ROS<span className='text-accent'>WATCH</span>
           </p>
         </div>
         <div>
@@ -130,17 +121,17 @@ const Header = () => {
               </div>
             </div>
           ) : (
-            <div className='flex'>
+            <div className='flex gap-3'>
               <Link
                 to='/login'
-                className='flex ml-3 bg-slate-100 text-main-red py-2 px-4 rounded-md hover:bg-slate-300 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 font-bold'
+                className='flex items-center gap-1.5 bg-white text-main-red py-2 px-4 rounded-lg hover:bg-gray-100 font-semibold transition-colors'
               >
                 Đăng nhập
                 <AiOutlineUser />
               </Link>
               <Link
                 to='/register'
-                className='flex ml-3 bg-slate-100 text-main-red py-2 px-4 rounded-md hover:bg-slate-300 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 font-bold'
+                className='flex items-center gap-1.5 bg-accent text-white py-2 px-4 rounded-lg hover:brightness-95 font-semibold transition'
               >
                 Đăng ký
                 <AiOutlineUsergroupAdd />

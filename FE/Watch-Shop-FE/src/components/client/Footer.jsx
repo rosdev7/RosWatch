@@ -7,10 +7,11 @@ const Footer = () => {
         <div className='mr-12 hidden lg:block'>
           <span className='font-bold'>RosWatch rất vui được đồng hành cùng bạn !!!</span>
         </div>
-        <div className='flex justify-center'>
+        <div className='flex justify-center gap-3'>
           <a
             href='#!'
-            className='mr-6 text-neutral-600 dark:text-neutral-200'
+            aria-label='Facebook'
+            className='flex h-9 w-9 items-center justify-center rounded-full bg-main-red text-white transition hover:brightness-110'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -59,14 +60,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='bg-main-red p-6 text-center dark:bg-neutral-100'>
-        <span className='text-neutral-100'>© 2024 Bản quyền: </span>
-        <a
-          className='font-semibold text-neutral-100 dark:text-neutral-100'
-          href='https://tw-elements.com/'
-        >
-          RosWatch
-        </a>
+      <div className='bg-main-red p-6 text-center'>
+        <span className='text-neutral-100'>© 2026 Bản quyền thuộc về </span>
+        <span className='font-semibold text-accent'>RosWatch</span>
       </div>
     </footer>
   );

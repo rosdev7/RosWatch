@@ -9,7 +9,11 @@ const navs = [
 
 const Navbar = () => {
   const handleClassName = ({ isActive }) => {
-    return `mx-3 transition-all duration-200 ease-in-out ${isActive && ' font-bold'}`;
+    return `relative mr-6 py-1 text-[15px] transition-all duration-200 ease-in-out hover:text-accent ${
+      isActive
+        ? 'font-bold text-accent after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-accent after:rounded-full'
+        : 'text-white/90'
+    }`;
   };
 
   const renderNavs = () => {
