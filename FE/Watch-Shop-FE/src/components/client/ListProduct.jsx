@@ -41,9 +41,9 @@ const ListProduct = ({ filteredList }) => {
             className='flex  gap-3 my-6'
             pageRangeDisplayed={3}
             pageCount={pageCount}
-            pageClassName='border border-solid w-10 h-10 rounded-md hover:bg-main-red hover:text-white cursor-pointer flex'
+            pageClassName='border border-solid border-gray-200 w-10 h-10 rounded-md hover:bg-ink hover:text-white hover:border-ink cursor-pointer flex transition-colors'
             pageLinkClassName='py-2 px-4'
-            activeClassName='bg-main-red text-white'
+            activeClassName='!bg-ink !text-white !border-ink'
             onPageChange={handlePageChange}
             nextLabel={
               <span className='w-10 h-10 flex items-center justify-center bg-white rounded-md border border-solid'>

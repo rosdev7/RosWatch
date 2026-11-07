@@ -3,8 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import requestHandle from '../utils/requestHandle';
-import undraw from '../assets/img/bg-01.jpg';
 import Toast from '../components/Toast';
+
+const SIDE_IMAGE =
+  'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=1000&q=80';
+const inputClass =
+  'w-full h-12 px-4 rounded-xl border border-gray-300 text-sm transition-all focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20';
+const labelClass = 'block text-sm font-semibold text-ink mb-2';
 
 const initialValues = {
   fullName: '',
@@ -57,20 +62,35 @@ const Register = () => {
   };
 
   return (
-    <div className='bg-gray-100 min-h-screen flex items-center justify-center'>
-      <div className='bg-white w-full max-w-screen-md rounded-lg overflow-hidden'>
-        <div
-          className='bg-cover bg-center bg-gray-400 py-16'
-          style={{ backgroundImage: `url(${undraw})` }}
-        >
-          <h1 className='text-4xl text-white font-bold uppercase text-center p-4'>Đăng ký</h1>
+    <div className='bg-cream min-h-screen flex px-4 py-12'>
+      <div className='bg-white w-full max-w-4xl m-auto rounded-3xl overflow-hidden shadow-2xl grid md:grid-cols-2'>
+        {/* Panel ảnh */}
+        <div className='relative hidden md:block'>
+          <img
+            src={SIDE_IMAGE}
+            alt='RosWatch'
+            className='absolute inset-0 h-full w-full object-cover'
+          />
+          <div className='absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/30' />
+          <div className='relative z-10 flex h-full flex-col justify-end p-10 text-white'>
+            <span className='eyebrow !text-accent'>RosWatch</span>
+            <h2 className='section-title mt-3 text-3xl font-bold text-white'>
+              Gia nhập cùng chúng tôi
+            </h2>
+            <p className='mt-3 text-sm text-white/75'>
+              Tạo tài khoản để mua sắm nhanh hơn và nhận nhiều ưu đãi hấp dẫn.
+            </p>
+          </div>
         </div>
+
+        {/* Form */}
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
+          validateOnBlur={false}
           onSubmit={handleRegister}
         >
-          <Form className='w-full py-10 px-20'>
+          <Form className='w-full p-8 sm:p-10'>
             {message && (
               <Toast
                 message={message}
@@ -78,174 +98,70 @@ const Register = () => {
                 onClose={() => setMessage('')}
               />
             )}
-            <div className='mb-6'>
-              <label
-                className='text-[#808080] text-sm font-bold self-center'
-                htmlFor='fullName'
-              >
-                Họ và tên
-              </label>
-              <Field
-                type='text'
-                id='fullName'
-                name='fullName'
-                className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                placeholder='Nhập họ tên'
-              />
-              <ErrorMessage
-                name='fullName'
-                component='div'
-                className='text-red-500'
-              />
+            <div className='mb-7'>
+              <span className='eyebrow'>Tài khoản mới</span>
+              <h1 className='section-title mt-2 text-3xl font-bold'>Đăng ký</h1>
             </div>
 
-            <div className='grid grid-cols-2 col-span-2 gap-10'>
-              <div className='col-span-1 mb-6'>
-                <label
-                  className='text-[#808080] text-sm font-bold self-center'
-                  htmlFor='birthDate'
-                >
-                  Ngày sinh
-                </label>
-                <Field
-                  type='date'
-                  id='birthDate'
-                  name='birthDate'
-                  className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                />
-                <ErrorMessage
-                  name='birthDate'
-                  component='div'
-                  className='text-red-500'
-                />
-              </div>
+            <div className='mb-4'>
+              <label className={labelClass} htmlFor='fullName'>Họ và tên</label>
+              <Field type='text' id='fullName' name='fullName' className={inputClass} placeholder='Nhập họ tên' />
+              <ErrorMessage name='fullName' component='div' className='text-red-500 text-sm mt-1' />
+            </div>
 
-              <div className='col-span-1 mb-6'>
-                <label
-                  className='text-[#808080] text-sm font-bold self-center mb-3'
-                  htmlFor='phone'
-                >
-                  Số điện thoại
-                </label>
-                <Field
-                  type='text'
-                  id='phone'
-                  name='phone'
-                  className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                  placeholder='Nhập số điện thoại'
-                />
-                <ErrorMessage
-                  name='phone'
-                  component='div'
-                  className='text-red-500'
-                />
+            <div className='grid grid-cols-2 gap-4'>
+              <div className='mb-4'>
+                <label className={labelClass} htmlFor='birthDate'>Ngày sinh</label>
+                <Field type='date' id='birthDate' name='birthDate' className={inputClass} />
+                <ErrorMessage name='birthDate' component='div' className='text-red-500 text-sm mt-1' />
+              </div>
+              <div className='mb-4'>
+                <label className={labelClass} htmlFor='phone'>Số điện thoại</label>
+                <Field type='text' id='phone' name='phone' className={inputClass} placeholder='Nhập SĐT' />
+                <ErrorMessage name='phone' component='div' className='text-red-500 text-sm mt-1' />
               </div>
             </div>
 
-            <div className='mb-6'>
-              <label
-                className='text-[#808080] text-sm font-bold self-center'
-                htmlFor='address'
-              >
-                Địa chỉ
-              </label>
-              <Field
-                type='text'
-                id='address'
-                name='address'
-                className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                placeholder='Nhập địa chỉ'
-              />
-              <ErrorMessage
-                name='address'
-                component='div'
-                className='text-red-500'
-              />
+            <div className='mb-4'>
+              <label className={labelClass} htmlFor='address'>Địa chỉ</label>
+              <Field type='text' id='address' name='address' className={inputClass} placeholder='Nhập địa chỉ' />
+              <ErrorMessage name='address' component='div' className='text-red-500 text-sm mt-1' />
             </div>
 
-            <div className='mb-6'>
-              <label
-                className='text-[#808080] text-sm font-bold self-center'
-                htmlFor='email'
-              >
-                Email
-              </label>
-              <Field
-                type='email'
-                id='email'
-                name='email'
-                className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                placeholder='Nhập email'
-              />
-              <ErrorMessage
-                name='email'
-                component='div'
-                className='text-red-500'
-              />
+            <div className='mb-4'>
+              <label className={labelClass} htmlFor='email'>Email</label>
+              <Field type='email' id='email' name='email' className={inputClass} placeholder='Nhập email' />
+              <ErrorMessage name='email' component='div' className='text-red-500 text-sm mt-1' />
             </div>
 
-            <div className='grid grid-cols-2 col-span-2 gap-10'>
-              <div className='col-span-1 mb-6'>
-                <label
-                  className='block text-[#808080] text-sm font-bold self-center'
-                  htmlFor='password'
-                >
-                  Mật khẩu
-                </label>
-                <Field
-                  type='password'
-                  id='password'
-                  name='password'
-                  className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                  placeholder='Nhập mật khẩu'
-                />
-                <ErrorMessage
-                  name='password'
-                  component='div'
-                  className='text-red-500'
-                />
+            <div className='grid grid-cols-2 gap-4'>
+              <div className='mb-4'>
+                <label className={labelClass} htmlFor='password'>Mật khẩu</label>
+                <Field type='password' id='password' name='password' className={inputClass} placeholder='Mật khẩu' />
+                <ErrorMessage name='password' component='div' className='text-red-500 text-sm mt-1' />
               </div>
-              <div className='col-span-1 mb-6'>
-                <label
-                  className='block text-[#808080] text-sm font-bold self-center'
-                  htmlFor='rePassword'
-                >
-                  Xác nhận mật khẩu
-                </label>
-                <Field
-                  type='password'
-                  id='rePassword'
-                  name='rePassword'
-                  className='w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-b-2 focus:border-main-red'
-                  placeholder='Nhập lại mật khẩu'
-                />
-                <ErrorMessage
-                  name='rePassword'
-                  component='div'
-                  className='text-red-500'
-                />
+              <div className='mb-4'>
+                <label className={labelClass} htmlFor='rePassword'>Xác nhận</label>
+                <Field type='password' id='rePassword' name='rePassword' className={inputClass} placeholder='Nhập lại' />
+                <ErrorMessage name='rePassword' component='div' className='text-red-500 text-sm mt-1' />
               </div>
             </div>
-            <div className='mb-6 pt-7'>
-              <button
-                type='submit'
-                className='w-full col-span-7 bg-main-red text-white font-bold py-2 rounded-full hover-bg-main-black'
-              >
-                Đăng ký
-              </button>
-            </div>
-            <div className='col-span-2 text-right text-sm'>
-              <span className=''>Đã có tài khoản? </span>
-              <Link
-                to='/login'
-                className='text-[#999999] font-bold'
-              >
+
+            <button
+              type='submit'
+              className='w-full mt-3 bg-ink text-white font-bold py-3 rounded-full transition-all hover:bg-ink-dark hover:-translate-y-0.5'
+            >
+              Đăng ký
+            </button>
+
+            <div className='text-center text-sm mt-5 text-gray-500'>
+              <span>Đã có tài khoản? </span>
+              <Link to='/login' className='font-bold text-accent-dark hover:underline'>
                 Đăng nhập
               </Link>
             </div>
           </Form>
         </Formik>
-        <div className='relative bg-gray-600 bg-opacity-70 top-0 left-0 h-full'></div>
       </div>
     </div>
   );

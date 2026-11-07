@@ -8,9 +8,27 @@ module.exports = {
 
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+      },
       colors: {
-        'main-red': '#2d2d2e',
-        'main-black': '#354458',
+        'main-red': '#1f2937',
+        'main-black': '#374151',
+        accent: '#c6a15b',
+        'accent-dark': '#a9854a',
+        ink: '#14181f',
+        'ink-dark': '#0b0e13',
+        cream: '#f7f4ed',
+      },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.7s ease both',
       },
       width: {
         container: '1300px',

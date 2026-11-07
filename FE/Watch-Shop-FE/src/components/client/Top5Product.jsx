@@ -46,10 +46,16 @@ const Top5Product = () => {
   };
 
   return (
-    <div className='mt-4'>
-      <p className='text-main-black text-4xl font-bold py-5 border-b-2 border-gray-400'>
-        SẢN PHẨM BÁN CHẠY
-      </p>
+    <div className='mt-14'>
+      <div className='flex items-end justify-between gap-4 mb-6'>
+        <div>
+          <span className='eyebrow'>Được yêu thích nhất</span>
+          <h2 className='section-title mt-3 text-3xl md:text-4xl font-bold'>
+            Sản phẩm bán chạy
+          </h2>
+        </div>
+        <span className='hidden md:block h-px flex-1 bg-gray-200 mb-3' />
+      </div>
       <Slider
         {...settings}
         className='mt-3'

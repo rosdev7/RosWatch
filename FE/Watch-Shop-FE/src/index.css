@@ -1,6 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #14181f;
+  background: #ffffff;
+}
+
+/* Nhãn nhỏ phía trên tiêu đề (eyebrow) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a9854a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 2px;
+  background: #c6a15b;
+  border-radius: 2px;
+}
+
+/* Tiêu đề section kiểu editorial */
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Thẻ sản phẩm: hiệu ứng nổi nhẹ khi rê chuột */
+.product-card {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 48px -16px rgba(20, 24, 31, 0.22);
+  border-color: #e8ddc6;
+}
 
 .loading-indicator:before {
   content: '';
@@ -37,9 +87,38 @@
 }
 .slick-prev:before {
   content: '←';
-  color: gray !important;
+  color: #c6a15b !important;
+  font-size: 24px !important;
 }
 .slick-next:before {
-  content: '←';
-  color: gray !important;
+  content: '→';
+  color: #c6a15b !important;
+  font-size: 24px !important;
+}
+/* Dots cho slider */
+.slick-dots li button:before {
+  font-size: 9px !important;
+  color: #c6a15b !important;
+  opacity: 0.35 !important;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 1 !important;
+  color: #c6a15b !important;
+}
+
+/* Hero slider: cho slide cao full */
+.hero-slider .slick-slide {
+  padding: 0;
+}
+.hero-slider .slick-slide > div {
+  line-height: 0;
+}
+.hero-slider .slick-dots {
+  bottom: 18px;
+}
+.hero-slider .slick-dots li button:before {
+  color: #ffffff !important;
+}
+.hero-slider .slick-dots li.slick-active button:before {
+  color: #ffffff !important;
 }

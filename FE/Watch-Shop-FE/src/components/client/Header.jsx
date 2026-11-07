@@ -4,13 +4,33 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { AiOutlinePhone } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiArrowFromLeft } from 'react-icons/bi';
-import logo from '../../assets/img/LogoRosWatch.png';
 import Navbar from './Navbar';
 import { AiOutlineUser, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { setCountCart } from '../../utils/counterCartSlice';
 import requestHandler from '../../utils/requestHandle';
 
 const menuAvatar = [{ to: '/client/profile', text: 'Tài khoản' }];
+
+// Logo đồng hồ dạng SVG (tự vẽ, không dùng file ảnh)
+const BrandMark = () => (
+  <svg
+    viewBox='0 0 48 48'
+    className='w-11 h-11'
+    aria-hidden='true'
+  >
+    <circle cx='24' cy='24' r='22' fill='none' stroke='#c6a15b' strokeWidth='2' />
+    <circle cx='24' cy='24' r='17' fill='none' stroke='#c6a15b' strokeWidth='1' opacity='0.5' />
+    {/* vạch giờ 12-3-6-9 */}
+    <rect x='23' y='9' width='2' height='4' rx='1' fill='#c6a15b' />
+    <rect x='35' y='23' width='4' height='2' rx='1' fill='#c6a15b' />
+    <rect x='23' y='35' width='2' height='4' rx='1' fill='#c6a15b' />
+    <rect x='9' y='23' width='4' height='2' rx='1' fill='#c6a15b' />
+    {/* kim đồng hồ */}
+    <line x1='24' y1='24' x2='24' y2='15' stroke='#ffffff' strokeWidth='2' strokeLinecap='round' />
+    <line x1='24' y1='24' x2='31' y2='27' stroke='#ffffff' strokeWidth='2' strokeLinecap='round' />
+    <circle cx='24' cy='24' r='2' fill='#c6a15b' />
+  </svg>
+);
 
 const Header = () => {
   const [isHoveredAvatar, setIsHoveredAvatar] = useState(false);
@@ -52,7 +72,7 @@ const Header = () => {
       return (
         <li
           key={index}
-          className='p-2 hover:bg-red-100 transition-all duration-200 ease-in-out'
+          className='p-2 hover:bg-accent/10 transition-all duration-200 ease-in-out'
         >
           <Link
             to={item.to}
@@ -66,29 +86,21 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-main-red'>
-      <div className='w-container h-header mx-auto flex items-center justify-between border-b-2'>
-        <div className='text-white text-2xl font-semibold flex items-center'>
-          <div className='w-16 h-16 mr-2 flex items-center justify-center border border-white rounded-full'>
-            <img
-              src={logo}
-              alt='logo'
-              srcSet=''
-              className='w-20 h-20'
-            />
+    <header className='bg-ink sticky top-0 z-50 shadow-lg'>
+      <div className='w-container h-header mx-auto flex items-center justify-between border-b border-white/10'>
+        <Link to='/client/' className='text-white flex items-center group'>
+          <div className='w-12 h-12 mr-3 flex items-center justify-center rounded-full ring-1 ring-accent/40 bg-white/5 transition-transform duration-300 group-hover:scale-105'>
+            <BrandMark />
           </div>
-          <p className='text-xl font-bold'>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>R</span>
-          <span style={{ transform: 'rotate(5deg)' }}>O</span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>S</span>
-          <span style={{ transform: 'rotate(5deg)' }}> </span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>W</span>
-          <span style={{ transform: 'rotate(5deg)' }}>A</span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>T</span>
-          <span style={{ transform: 'rotate(5deg)' }}>C</span>
-          <span style={{ textDecoration: 'underline', transform: 'rotate(-5deg)' }}>H</span>
-          </p>
-        </div>
+          <div className='leading-none'>
+            <p className='text-2xl font-extrabold tracking-[0.12em]'>
+              ROS<span className='text-accent'>WATCH</span>
+            </p>
+            <span className='text-[10px] uppercase tracking-[0.3em] text-white/50'>
+              Luxury Timepieces
+            </span>
+          </div>
+        </Link>
         <div>
           {isLoggedIn ? (
             <div className='flex items-center relative'>
@@ -98,24 +110,24 @@ const Header = () => {
                   onClick={() => navigate('/client/cart')}
                 />
                 <span
-                  className='absolute -top-1 -right-1 bg-white rounded-full text-xs text-center font-semibold
-                  min-w-[20px] h-5 px-1 leading-5 border-2 border-main-red flex items-center justify-center'
+                  className='absolute -top-1 -right-1 bg-accent text-ink rounded-full text-xs text-center font-bold
+                  min-w-[20px] h-5 px-1 leading-5 border-2 border-ink flex items-center justify-center'
                 >
                   {counterCart ?? 0}
                 </span>
               </div>
               <div
-                className='w-10 h-10 bg-white rounded-full border-2 border-white relative flex items-center justify-center'
+                className='w-10 h-10 bg-white rounded-full border-2 border-accent relative flex items-center justify-center'
                 onMouseEnter={() => setIsHoveredAvatar(true)}
                 onMouseLeave={() => setIsHoveredAvatar(false)}
               >
-                <AiOutlineUser className='text-main-red text-2xl' aria-hidden='true' />
+                <AiOutlineUser className='text-ink text-2xl' aria-hidden='true' />
                 {isHoveredAvatar && (
                   <div className='absolute top-5 right-0 z-50 transition-all duration-200 ease-in-out'>
                     <ul className='bg-white shadow-2xl w-36 rounded-md mt-5 overflow-hidden'>
                       {renderMenuAvatar()}
                       <hr />
-                      <li className='p-2 hover:bg-red-100 transition-all duration-200 ease-in-out block cursor-pointer font-bold'>
+                      <li className='p-2 hover:bg-accent/10 transition-all duration-200 ease-in-out block cursor-pointer font-bold'>
                         <button
                           onClick={handleLogout}
                           className='flex items-center'
@@ -130,17 +142,17 @@ const Header = () => {
               </div>
             </div>
           ) : (
-            <div className='flex'>
+            <div className='flex gap-3'>
               <Link
                 to='/login'
-                className='flex ml-3 bg-slate-100 text-main-red py-2 px-4 rounded-md hover:bg-slate-300 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 font-bold'
+                className='flex items-center gap-1.5 bg-white text-ink py-2 px-4 rounded-lg hover:bg-gray-100 font-semibold transition-colors'
               >
                 Đăng nhập
                 <AiOutlineUser />
               </Link>
               <Link
                 to='/register'
-                className='flex ml-3 bg-slate-100 text-main-red py-2 px-4 rounded-md hover:bg-slate-300 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 font-bold'
+                className='flex items-center gap-1.5 bg-accent text-white py-2 px-4 rounded-lg hover:brightness-95 font-semibold transition'
               >
                 Đăng ký
                 <AiOutlineUsergroupAdd />
