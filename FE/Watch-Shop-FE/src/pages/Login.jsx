@@ -77,8 +77,8 @@ const Login = () => {
   };
 
   return (
-    <div className='bg-cream min-h-screen flex items-start justify-center px-4 py-12'>
-      <div className='bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl grid md:grid-cols-2'>
+    <div className='bg-cream min-h-screen flex px-4 py-12'>
+      <div className='bg-white w-full max-w-4xl m-auto rounded-3xl overflow-hidden shadow-2xl grid md:grid-cols-2'>
         {/* Panel ảnh */}
         <div className='relative hidden md:block'>
           <img
